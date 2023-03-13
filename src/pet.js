@@ -10,8 +10,16 @@ Pet.prototype.growUp = function() {
     this.age += 1;
     this.hunger += 5;
     this.fitness -= 3;
-};
+}
 
+Pet.prototype.swim = function() {
+    const MAXIMUM_FITNESS = 10;
+    if ((this.fitness + 4) <= MAXIMUM_FITNESS ) {
+        this.fitness += 4;
+        } else { 
+        this.fitness = MAXIMUM_FITNESS;
+    }
+}
 
 
 module.exports = Pet;
