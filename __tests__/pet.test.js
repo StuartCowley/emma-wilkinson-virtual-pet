@@ -8,7 +8,7 @@ describe('constructor', () => {
   it('sets the name property', () => {
     const pet = new Pet('Fido');
 
-    expect(pet.name).toEqual('Fido');
+    expect(pet.name).toEqual('Fint');
   });
   it('has an initial age of 0', () => {
     const pet = new Pet('Fido');
