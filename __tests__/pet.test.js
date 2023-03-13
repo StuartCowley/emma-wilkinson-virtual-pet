@@ -26,3 +26,22 @@ describe('grow up', () => {
   });
 });
 
+describe('pet gets hungry', () => {
+  it('makes pet hungry',() => {
+    const pet = new Pet('Fido');
+
+    pet.hunger();
+    
+    expect(pet.hunger).toEqual(5);
+  });
+});
+
+describe('pets decreasing fitness with age', () => {
+  it('pets fitness decreases as it gets older', () => {
+    const pet = new Pet('Fido');
+
+    pet.fitness();
+
+    expect(pet.fitness).toEqual(10);
+  });
+});
