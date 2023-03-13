@@ -6,20 +6,40 @@ function Pet(name) {
     this.fitness = 10;
 }
 
-Pet.prototype.growUp = function() {
+Pet.prototype.growUp = function () {
     this.age += 1;
     this.hunger += 5;
     this.fitness -= 3;
 }
 
-Pet.prototype.swim = function() {
+Pet.prototype.swim = function () {
     const MAXIMUM_FITNESS = 10;
-    if ((this.fitness + 4) <= MAXIMUM_FITNESS ) {
+    if ((this.fitness + 4) <= MAXIMUM_FITNESS) {
         this.fitness += 4;
-        } else { 
+    } else {
         this.fitness = MAXIMUM_FITNESS;
     }
 }
+
+Pet.prototype.feed = function () {
+    const MINIMUM_HUNGER = 0;
+    if ((this.hunger - 3) >= MINIMUM_HUNGER) {
+        this.hunger -= 3;
+    } else {
+        this.hunger = MINIMUM_HUNGER;
+
+    };
+}
+
+Pet.prototype.checkUp = function () {
+    if (this.hunger >= 5 && this.fitness <= 3) {
+    return 'I am hungry and I need to swim!'; 
+    } else if (this.fitness <= 3) {
+    return 'I need to swim!'; 
+ } else if (this.hunger >= 5) {
+    return 'I need food!'
+ } else return 'I am great.'
+};
 
 
 module.exports = Pet;
