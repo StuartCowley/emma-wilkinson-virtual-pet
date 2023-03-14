@@ -25,6 +25,13 @@ describe('grow up', () => {
 
     expect(fin.age).toEqual(1);
   });
+  it('throws error if pet is dead', () => {
+    const fin = new Pet('Fin');
+
+    fin.age = 30;
+
+    expect(() => fin.growUp()).toThrow('Fin is dead :(');
+  });
 });
 
 describe('pet gets hungry', () => {
@@ -66,6 +73,14 @@ describe('swim', () => {
 
     expect(fin.fitness).toEqual(10);
   });
+
+  it('throws error if pet is dead', () => {
+    const fin = new Pet('Fin');
+
+    fin.age = 30;
+
+    expect(() => fin.swim()).toThrow('Fin is dead :(')
+  });
 });
 
 describe('feed', () => {
@@ -87,6 +102,14 @@ describe('feed', () => {
 
     expect(fin.hunger).toEqual(0);
   });
+  
+  it('throws error if pet is dead', () => {
+    const fin = new Pet('Fin');
+
+    fin.age = 30;
+  
+    expect(() => fin.feed()).toThrow('Fin is dead :(');
+  })
 });
 
 describe('if fitness is 3 or less', () => {
@@ -95,14 +118,14 @@ describe('if fitness is 3 or less', () => {
 
     fin.fitness = 3;
     fin.checkUp();
-    
+
     expect(fin.checkUp()).toEqual('I need to swim!');
   });
 });
 
 describe('if hunger is 5 or less', () => {
   it('returns "I need food!"', () => {
-    const fin = new Pet('Fin'); 
+    const fin = new Pet('Fin');
 
     fin.hunger = 5;
     fin.checkUp();
@@ -113,12 +136,23 @@ describe('if hunger is 5 or less', () => {
 
 describe('if hunger is 5 or less and if exercise is 3 or less.', () => {
   it('returns "I am hungry and I need to swim!"', () => {
-  const fin = new Pet('Fin'); 
+    const fin = new Pet('Fin');
 
-  fin.hunger = 5;
-  fin.fitness = 3;
-  fin.checkUp();
+    fin.hunger = 5;
+    fin.fitness = 3;
+    fin.checkUp();
 
-  expect(fin.checkUp()).toEqual('I am hungry and I need to swim!')
+    expect(fin.checkUp()).toEqual('I am hungry and I need to swim!')
   });
 });
+
+describe('Pet shows as dead when you do a checkup', () => {
+  it('returns "Fin is dead :("', () => {
+    const fin = new Pet('Fin');
+
+    fin.age = 30;
+
+    expect(() => fin.checkUp()).toThrow('Fin is dead :(');
+  })
+
+})
