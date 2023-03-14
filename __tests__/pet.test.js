@@ -1,5 +1,7 @@
 const Pet = require('../src/pet');
 const fin = new Pet('Fin');
+const child = new Pet('JJ');
+
 
 describe('constructor', () => {
   it('returns an object', () => {
@@ -102,12 +104,12 @@ describe('feed', () => {
 
     expect(fin.hunger).toEqual(0);
   });
-  
+
   it('throws error if pet is dead', () => {
     const fin = new Pet('Fin');
 
     fin.age = 30;
-  
+
     expect(() => fin.feed()).toThrow('Fin is dead :(');
   })
 });
@@ -152,7 +154,18 @@ describe('Pet shows as dead when you do a checkup', () => {
 
     fin.age = 30;
 
-    expect(() => fin.checkUp()).toThrow('Fin is dead :(');
+    expect(() => fin.checkUp()).toThrow('Fin is dead :(')
   })
 
+})
+
+describe('A child pet is added to the game', () => {
+  it('allows your pet to have a child', () => {
+    const fin = new Pet('Fin');
+
+    fin.adoptBaby('JJ');
+
+    expect(fin.children[0].name).toEqual('JJ');
+
+  })
 })

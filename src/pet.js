@@ -4,6 +4,7 @@ function Pet(name) {
     this.age = 0;
     this.hunger = 0;
     this.fitness = 10;
+    this.children = [];
 }
 
 Pet.prototype = {
@@ -58,6 +59,11 @@ Pet.prototype.checkUp = function () {
     } else if (this.hunger >= 5) {
         return 'I need food!'
     } else return 'I am great.'
+};
+
+Pet.prototype.adoptBaby = function (name) {
+    const child = new Pet(name);
+    this.children.push(child);
 };
 
 
